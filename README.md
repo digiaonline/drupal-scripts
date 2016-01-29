@@ -19,3 +19,14 @@ export PATH=$PATH:/vagrant/drupal-scripts
 cd drupal-scripts
 git pull
 ```
+
+## Contribute
+
+```bash
+cd drupal-scripts
+git checkout -b <new_branch_name>
+git add <files>
+git commit -m "<message>"
+git push
+```
+Create a [pull request](https://github.com/nordsoftware/drupal-scripts/pulls) and fix any problems found by [Travs CI](https://travis-ci.org/nordsoftware/drupal-scripts/pull_requests).
