@@ -6,6 +6,8 @@ Some handy tools for working with Drupal.
 
 ## Installation
 
+Some of these are wrappers for common tasks using [Terminus](https://pantheon.io/docs/articles/local/cli/), Pantheon's command-line interface ([installation instructions](https://github.com/pantheon-systems/cli#installation)).
+
 If your projects are in a `/vagrant/` directory:
 
 ```bash
