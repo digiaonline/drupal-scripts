@@ -4,7 +4,7 @@
 sitename=${PWD##*/}
 printf 'sitename: %s\n' "$sitename"
 
-cmd="terminus site deploy --site=$sitename --from=test --env=live --cc --note=Terminus"
+cmd="terminus site deploy --site=$sitename --env=live --cc --note=Terminus"
 echo "$cmd"
 eval "$cmd"
 
