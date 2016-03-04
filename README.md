@@ -1,6 +1,7 @@
 # Drupal scripts
 
 [![Build Status](https://travis-ci.org/nordsoftware/drupal-scripts.svg?branch=master)](https://travis-ci.org/nordsoftware/drupal-scripts)
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 Some handy tools for working with Drupal.
 
