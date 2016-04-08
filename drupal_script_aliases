@@ -1,0 +1,44 @@
+# Set directory variable to specify the directory for accessing .sh scripts
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+
+# Aliases for .sh scripts
+alias install-devel-themer=install-devel-themer.sh
+alias backup_create=$DIR/backup_create.sh
+alias deploy-to-test=$DIR/deploy-to-test.sh
+alias deploy-to-live=$DIR/deploy-to-live.sh
+
+
+# Replace current local database by a newly created backup from desired pantheon environment.
+# Note that this function will assume that the sites DB is named the same as the site folder. "-" characters in the
+# folder name are expected to be replaced by "_" in the DB name.
+
+# Environment parameter will default to "live" if left out.
+function newdb () {
+
+        if [ $# -eq 0 ]
+                then
+                        echo "Live environment load"
+                        local env='live'
+                else
+                        echo "$@ environment load"
+                        local env=$@
+        fi
+        drush sql-drop
+        local project=${PWD##*/}
+        echo "Folder name :" $project
+        terminus site backup create --site=$project --element=db --env=$env
+        terminus site backup get --site=$project --element=db --env=$env --latest --to-directory=/tmp
+        local dbname=$project"_"
+        local dbMachineName=${project//-/_}
+        cd /tmp
+        local db="$(ls -t $dbname* | head -1)"
+        echo "Database filename :" $db
+        echo "Database name: " $dbMachineName
+        zcat < $db |  mysql -uroot -p $dbMachineName
+        cd -
+        drush updb
+}
+
+# Function aliases.
+alias newdb=newdb
