@@ -5,7 +5,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Aliases for .sh scripts
 alias install-devel-themer=install-devel-themer.sh
 alias backup_create=$DIR/backup_create.sh
-alias unidev=$DIR/uniarts_dev_settings.sh
 alias deploy-to-test=$DIR/deploy-to-test.sh
 alias deploy-to-live=$DIR/deploy-to-live.sh
 
