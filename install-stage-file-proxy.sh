@@ -3,7 +3,7 @@
 echo ""
 echo "Make sure your local.settings.php contains this:"
 echo "
-$conf['running_on_localhost'] = TRUE;"
+\$conf['running_on_localhost'] = TRUE;"
 echo ""
 echo "And make sure your settings.php contains this:"
 echo "
