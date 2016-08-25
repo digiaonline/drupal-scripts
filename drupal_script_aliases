@@ -28,8 +28,8 @@ function newdb () {
         drush sql-drop
         local project=${PWD##*/}
         echo "Folder name :" $project
-        terminus site backup create --site=$project --element=db --env=$env
-        terminus site backup get --site=$project --element=db --env=$env --latest --to-directory=/tmp
+        terminus site backups create --site=$project --element=db --env=$env
+        terminus site backups get --site=$project --element=db --env=$env --latest --to=/tmp
         local dbname=$project"_"
         local dbMachineName=${project//-/_}
         cd /tmp
