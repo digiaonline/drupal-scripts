@@ -15,11 +15,20 @@ git clone https://github.com/nordsoftware/drupal-scripts.git
 export PATH=$PATH:/vagrant/drupal-scripts
 ```
 
+Edit your `~/.bash_profile` or` ~/.bashrc` to include:
+```bash
+source /vagrant/drupal-scripts/drupal_script_aliases
+```
+
+Then also run that `source` command just once.
+
+
 ## Update
 
 ```bash
 cd drupal-scripts
 git pull
+source /vagrant/drupal-scripts/drupal_script_aliases
 ```
 
 ## Contribute
