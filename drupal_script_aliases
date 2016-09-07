@@ -34,7 +34,13 @@ function newdb () {
         local db="$(ls -t /tmp/$dbname* | head -1)"
         echo "Database filename :" $db
         zcat < $db | drush sql-cli
-        drush updb
+        drush updb --yes
+        echo
+        echo "Database is ready!"
+        echo
+        drush uli
+        drush en views_ui --yes
+        install-stage-file-proxy
 }
 
 # Function aliases.
