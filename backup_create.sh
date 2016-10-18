@@ -10,8 +10,8 @@ if [ $# -eq 0 ]
     echo "Live environment load"
     env='live'
   else
-    echo "$@ environment load"
-    env=$@
+    echo "$* environment load"
+    env=$*
 fi
 
 cmd="terminus site backups create --site=$sitename --element=db --env=$env"
