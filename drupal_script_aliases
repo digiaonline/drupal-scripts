@@ -22,8 +22,8 @@ function newdb () {
       echo "Live environment load"
       local env='live'
     else
-    echo "$@ environment load"
-    local env=$@
+    echo "$* environment load"
+    local env=$*
   fi
   drush sql-drop
   local project=${PWD##*/}
