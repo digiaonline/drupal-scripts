@@ -13,6 +13,7 @@ addons:
 script:
  - shellcheck --version
  - shellcheck *.sh
+ - shellcheck drupal_script_aliases
 
 matrix:
   fast_finish: true
