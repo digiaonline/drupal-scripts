@@ -39,8 +39,10 @@ function newdb () {
         echo "Database is ready!"
         echo
         drush uli
+        echo "************************* ^^^ Login URL ^^^ *************************"
+        echo
         drush en views_ui --yes
-        install-stage-file-proxy
+        install-stage-file-proxy.sh
 }
 
 # Function aliases.
