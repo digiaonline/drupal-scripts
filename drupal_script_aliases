@@ -17,32 +17,32 @@ alias deploy-to-live=$DIR/deploy-to-live.sh
 # Environment parameter will default to "live" if left out.
 function newdb () {
 
-        if [ $# -eq 0 ]
-                then
-                        echo "Live environment load"
-                        local env='live'
-                else
-                        echo "$@ environment load"
-                        local env=$@
-        fi
-        drush sql-drop
-        local project=${PWD##*/}
-        echo "Folder name :" $project
-        terminus site backups create --site=$project --element=db --env=$env
-        terminus site backups get --site=$project --element=db --env=$env --latest --to=/tmp
-        local dbname=$project"_"
-        local db="$(ls -t /tmp/$dbname* | head -1)"
-        echo "Database filename :" $db
-        zcat < $db | drush sql-cli
-        drush updb --yes
-        echo
-        echo "Database is ready!"
-        echo
-        drush uli
-        echo "************************* ^^^ Login URL ^^^ *************************"
-        echo
-        drush en views_ui --yes
-        install-stage-file-proxy.sh
+  if [ $# -eq 0 ]
+    then
+      echo "Live environment load"
+      local env='live'
+    else
+    echo "$@ environment load"
+    local env=$@
+  fi
+  drush sql-drop
+  local project=${PWD##*/}
+  echo "Folder name :" $project
+  terminus site backups create --site=$project --element=db --env=$env
+  terminus site backups get --site=$project --element=db --env=$env --latest --to=/tmp
+  local dbname=$project"_"
+  local db="$(ls -t /tmp/$dbname* | head -1)"
+  echo "Database filename :" $db
+  zcat < $db | drush sql-cli
+  drush updb --yes
+  echo
+  echo "Database is ready!"
+  echo
+  drush uli
+  echo "************************* ^^^ Login URL ^^^ *************************"
+  echo
+  drush en views_ui --yes
+  install-stage-file-proxy.sh
 }
 
 # Function aliases.
