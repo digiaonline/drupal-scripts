@@ -5,9 +5,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Aliases for .sh scripts
 alias install-devel-themer=install-devel-themer.sh
 alias install-stage-file-proxy=install-stage-file-proxy.sh
-alias backup_create=$DIR/backup_create.sh
-alias deploy-to-test=$DIR/deploy-to-test.sh
-alias deploy-to-live=$DIR/deploy-to-live.sh
+alias backup_create="$DIR/backup_create.sh"
+alias deploy-to-test="$DIR/deploy-to-test.sh"
+alias deploy-to-live="$DIR/deploy-to-live.sh"
 
 
 # Replace current local database by a newly created backup from desired pantheon environment.
@@ -27,13 +27,13 @@ function newdb () {
   fi
   drush sql-drop
   local project=${PWD##*/}
-  echo "Folder name :" $project
-  terminus site backups create --site=$project --element=db --env=$env
-  terminus site backups get --site=$project --element=db --env=$env --latest --to=/tmp
+  echo "Folder name : $project"
+  "terminus site backups create --site=$project --element=db --env=$env"
+  "terminus site backups get --site=$project --element=db --env=$env --latest --to=/tmp"
   local dbname=$project"_"
   local db="$(ls -t /tmp/$dbname* | head -1)"
-  echo "Database filename :" $db
-  zcat < $db | drush sql-cli
+  echo "Database filename : $db"
+  "zcat < $db | drush sql-cli"
   drush updb --yes
   echo
   echo "Database is ready!"
