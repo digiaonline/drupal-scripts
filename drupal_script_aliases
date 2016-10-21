@@ -31,7 +31,8 @@ function newdb () {
   "terminus site backups create --site=$project --element=db --env=$env"
   "terminus site backups get --site=$project --element=db --env=$env --latest --to=/tmp"
   local dbname=$project"_"
-  local db="$(ls -t /tmp/$dbname* | head -1)"
+  local db
+  db="$(ls -t /tmp/$dbname* | head -1)"
   echo "Database filename : $db"
   "zcat < $db | drush sql-cli"
   drush updb --yes
