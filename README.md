@@ -1,6 +1,7 @@
 # Drupal scripts
 
 [![Build Status](https://travis-ci.org/digiaonline/drupal-scripts.svg?branch=master)](https://travis-ci.org/digiaonline/drupal-scripts)
+[![GitHub license](https://img.shields.io/:license-MIT-blue.svg)](LICENSE)
 
 Some handy tools for working with Drupal.
 
