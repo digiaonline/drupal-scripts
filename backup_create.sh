@@ -4,12 +4,16 @@
 sitename=${PWD##*/}
 printf 'sitename: %s\n' "$sitename"
 
-cmd="terminus site backups create --site=$sitename --element=db --env=live"
+# Environment parameter will default to "live" if left out.
+if [ $# -eq 0 ]
+  then
+    echo "Live environment load"
+    env='live'
+  else
+    echo "$* environment load"
+    env=$*
+fi
+
+cmd="terminus site backups create --site=$sitename --element=db --env=$env"
 echo "$cmd"
 eval "$cmd"
-# cmd="terminus site backups create --site=$sitename --element=db --env=test"
-# echo "$cmd"
-# eval "$cmd"
-# cmd="terminus site backups create --site=$sitename --element=db --env=dev"
-# echo "$cmd"
-# eval "$cmd"

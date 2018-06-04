@@ -1,6 +1,7 @@
 # Drupal scripts
 
 [![Build Status](https://travis-ci.org/nordsoftware/drupal-scripts.svg?branch=master)](https://travis-ci.org/nordsoftware/drupal-scripts)
+[![Build Status](https://travis-ci.org/digiaonline/drupal-scripts.svg?branch=master)](https://travis-ci.org/digiaonline/drupal-scripts)
 [![GitHub license](https://img.shields.io/:license-MIT-blue.svg)](LICENSE)
 
 Some handy tools for working with Drupal.
@@ -16,11 +17,20 @@ git clone https://github.com/nordsoftware/drupal-scripts.git
 export PATH=$PATH:/vagrant/drupal-scripts
 ```
 
+Edit your `~/.bash_profile` or` ~/.bashrc` to include:
+```bash
+source /vagrant/drupal-scripts/drupal_script_aliases
+```
+
+Then also run that `source` command just once.
+
+
 ## Update
 
 ```bash
 cd drupal-scripts
 git pull
+source /vagrant/drupal-scripts/drupal_script_aliases
 ```
 
 ## Contribute
